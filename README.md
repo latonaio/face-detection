@@ -1,14 +1,14 @@
 # face-detection #
-カメラの画像から顔を検出します。
+face-detectionは、カメラの画像から顔を検出するマイクロサービスです。
 
 ### デプロイ方法 ###
-このリポジトリをクローンしてそのディレクトリまで移動してください。
+1. このリポジトリをクローンしてそのディレクトリまで移動してください。
 
 ```
 $ git clone git clone git@bitbucket.org:latonaio/face-detection.git
 $ cd /path/to/face-detection
 ```
-利用したい環境に合わせて環境変数を設定してください。k8s/face-detection.yaml において設定が可能です。
+2. 利用したい環境に合わせて環境変数を設定してください。k8s/face-detection.yaml において設定が可能です。
 ```
           env:
             - name: PORT
@@ -18,9 +18,13 @@ $ cd /path/to/face-detection
             - name: DETECT_INTERVAL
               value: 0.1
 ```
-以下のコマンドを実行することでデプロイを行ってください。
+3. 以下のコマンドを実行することでdocker-imageを作成してください。
 ```
 $ make docker-build
+```
+4. 以下のコマンドを実行することでpodを起動してください。
+```
+$ kubectl apply -f k8s/face-detection.yaml
 ```
 
 ### 使用方法 ###
